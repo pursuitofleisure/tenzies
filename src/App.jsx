@@ -3,24 +3,44 @@ import './App.css';
 import Die from './components/Die';
 
 function App() {
-  const [dieRolls, setDieRolls] = useState(createDieArray());
+  const [dice, setDice] = useState(createDieArray());
+
+  function randomDie() {
+    return Math.ceil(Math.random() * 6);
+  }
 
   function createDieArray() {
-    return new Array(10)
-      .fill(0)
-      .map(() => ({
-        id: Math.random(),
-        value: Math.ceil(Math.random() * 6),
-        isHeld: false,
-      }));
+    return new Array(10).fill(0).map(() => ({
+      id: Math.random(),
+      value: randomDie(),
+      isHeld: false,
+    }));
   }
 
   function rollDice() {
-    setDieRolls(createDieArray());
+    setDice((prevDice) =>
+      prevDice.map((die) => {
+        return die.isHeld === true ? die : { ...die, value: randomDie() };
+      })
+    );
   }
 
-  const dieElements = dieRolls.map((die) => (
-    <Die key={die.id} value={die.value} />
+  function holdDie(id) {
+    setDice((prevDice) =>
+      prevDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
+  }
+
+  const dieElements = dice.map((die) => (
+    <Die
+      key={die.id}
+      id={die.id}
+      value={die.value}
+      isHeld={die.isHeld}
+      holdDie={holdDie}
+    />
   ));
 
   return (
