@@ -2,9 +2,14 @@ main {
   margin: 0 auto;
   padding: 34px;
   width: 360px;
-  height: 360px;
   background-color: #f5f5f5;
   border-radius: 10px;
+}
+
+h1 {
+  margin-block-start: 0;
+  font-size: 26px;
+  font-weight: 700;
 }
 
 .die-container {
@@ -44,4 +49,12 @@ main {
   color: #fff;
   border-radius: 4px;
   box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.15);
+}
+
+.tenzies-description {
+  margin-block-end: 1.5rem;
+  text-align: center;
+  & p {
+    color: #4a4e74;
+  }
 }
