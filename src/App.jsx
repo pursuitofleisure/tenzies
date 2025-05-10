@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './App.css';
 import Die from './components/Die';
+import Confetti from 'react-confetti';
 
 function App() {
-  const [dice, setDice] = useState(createDieArray());
+  const [dice, setDice] = useState(() => createDieArray());
 
   /* Determine game win - if every die is held and is the same value */
   const gameWon =
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <main>
+      {gameWon && <Confetti />}
       <div className="tenzies-description">
         <h1>Tenzies</h1>
         <p>
