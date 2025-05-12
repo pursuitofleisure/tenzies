@@ -27,11 +27,15 @@ function App() {
 
   /* Allow users to roll dice */
   function rollDice() {
-    setDice((prevDice) =>
-      prevDice.map((die) => {
-        return die.isHeld === true ? die : { ...die, value: randomDie() };
-      })
-    );
+    if (gameWon) {
+      setDice(createDieArray());
+    } else {
+      setDice((prevDice) =>
+        prevDice.map((die) => {
+          return die.isHeld === true ? die : { ...die, value: randomDie() };
+        })
+      );
+    }
   }
 
   /* Allow users to select die to prevent reroll */
