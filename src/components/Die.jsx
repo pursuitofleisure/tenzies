@@ -8,7 +8,12 @@ function Die({ id, value, isHeld, holdDie }) {
   const classes = arrClasses.join(' ');
 
   return (
-    <button onClick={() => holdDie(id)} className={classes}>
+    <button
+      onClick={() => holdDie(id)}
+      className={classes}
+      aria-label={`Die with value ${value}, 
+      ${isHeld ? 'held' : 'not held'}`}
+    >
       {value}
     </button>
   );
