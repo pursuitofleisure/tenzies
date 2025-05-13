@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import './App.css';
 import Die from './components/Die';
 import Confetti from 'react-confetti';
@@ -10,6 +10,15 @@ function App() {
   const gameWon =
     dice.every((die) => die.isHeld) &&
     dice.every((die) => (die.value = dice[0].value));
+
+  /* Focus on new game button after win */
+  const buttonNewGameRef = useRef(null);
+
+  useEffect(() => {
+    if (gameWon) {
+      buttonNewGameRef.current.focus();
+    }
+  }, [gameWon]);
 
   /* Function to create random die numbers */
   function randomDie() {
@@ -78,7 +87,7 @@ function App() {
         </p>
       </div>
       <div className="die-container">{dieElements}</div>
-      <button onClick={rollDice} className="roll-btn">
+      <button ref={buttonNewGameRef} onClick={rollDice} className="roll-btn">
         {gameWon ? 'New Game' : 'Roll'}
       </button>
     </main>
