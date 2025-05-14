@@ -39,7 +39,7 @@ button {
   }
 }
 
-@media screen and (min-width: 420px) {
+@media screen and (min-width: 400px) {
   .die-container {
     grid-template-columns: repeat(5, 1fr);
   }

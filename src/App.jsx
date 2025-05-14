@@ -71,7 +71,7 @@ function App() {
     <main>
       {gameWon && <Confetti />}
       <div className="tenzies-description">
-        <h1>Tenzies</h1>
+        <h1>Tenzies 🎲</h1>
         <p aria-live="polite">
           {gameWon ? (
             <span>
