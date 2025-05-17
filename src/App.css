@@ -1,9 +1,17 @@
 main {
   margin: 0 auto;
-  padding: 34px;
-  width: 360px;
+  padding: 1.25rem;
+  max-width: 360px;
+  color: #222;
   background-color: #f5f5f5;
   border-radius: 10px;
+}
+
+@media screen and (min-width: 380px) {
+  main {
+    padding: 2rem;
+    width: 360px;
+  }
 }
 
 h1 {
@@ -27,19 +35,13 @@ button {
 
 .die-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   align-items: center;
   justify-content: center;
   gap: 18px;
 }
 
-@media screen and (min-width: 340px) {
-  .die-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 350px) {
   .die-container {
     grid-template-columns: repeat(5, 1fr);
   }
@@ -85,6 +87,7 @@ button {
   margin-block-end: 1.5rem;
   text-align: center;
   & p {
+    min-height: 4.5rem;
     color: #4a4e74;
   }
 }
